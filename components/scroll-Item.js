@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
         borderColor:"#000",
         borderRadius:20,
         width:250,
-        height:350,
+        height:320,
         margin:10,
         elevation:5
 

@@ -4,30 +4,47 @@ import SearchBar from '../components/search-bar';
 import Icon from 'react-native-vector-icons/dist/MaterialIcons';
 import HorizontalList from '../components/horizontal-list-component';
 import { ScrollView } from 'react-native-gesture-handler';
+import RoundButton from '../components/round-button-component';
 
 
 const Home = ({navigator}) => {
     return(
         <SafeAreaView style={styles.container}>
             <ScrollView>
-            <View style={styles.top}>
-                <Icon name="notifications-none" size={20} color="grey"/>
-                <Icon name="notifications-none" size={20} color="grey"/>
-            </View>
-            <View style={styles.search}>
-                <SearchBar />
-            </View>
-            <View style={styles.section_title}>
-                <Text style={styles.title}>Popular Nearby</Text>
-                <TouchableOpacity >
-                    <Text style={styles.button}>View All</Text>
-                </TouchableOpacity>
-            </View>
+                <View style={styles.top}>
+                    <Icon name="notifications-none" size={20} color="grey"/>
+                    <Icon name="notifications-none" size={20} color="grey"/>
+                </View>
+                <View style={styles.searchSection}>
+                    <View  style={styles.search}>
+                        <SearchBar/>
+                    </View>
+                    <View style={styles.filter}>
+                        <RoundButton  icon="filter-variant"/>
+                    </View>
+                </View>
+                <View style={styles.section_title}>
+                    <Text style={styles.title}>Popular Nearby</Text>
+                    <TouchableOpacity >
+                        <Text style={styles.button}>View All</Text>
+                    </TouchableOpacity>
+                </View>
 
-            <View style={styles.horizontalList}>
-                <HorizontalList/>
-            </View>
-                
+                <View style={styles.horizontalList}>
+                    <HorizontalList/>
+                </View>
+
+                <View style={styles.section_title}>
+                    <Text style={styles.title}>Recommended for you</Text>
+                    <TouchableOpacity >
+                        <Text style={styles.button}>View All</Text>
+                    </TouchableOpacity>
+                </View>
+                    
+                <View style={styles.horizontalList}>
+                    <HorizontalList/>
+                </View>
+
             </ScrollView>
             
         </SafeAreaView>
@@ -40,8 +57,17 @@ const styles = StyleSheet.create({
         backgroundColor:"#fff"
         
     },
+    searchSection:{
+        flexDirection:"row",
+        flex:1,
+        justifyContent:"space-between"
+
+    },
     search:{
-        marginTop:20
+        flex:1
+    },
+    filter:{
+        paddingEnd:10
     },
     top:{
         flexDirection:"row",
@@ -65,8 +91,9 @@ const styles = StyleSheet.create({
         flex:1,
         flexDirection:"row",
         justifyContent:"space-between",
-        padding:20
-        
+        paddingStart:20,
+        paddingEnd:20,
+        paddingTop:10,
     }
 
 })
