@@ -10,6 +10,8 @@ target 'realestate' do
 
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
+  pod 'rn-range-slider', :path => '../node_modules/rn-range-slider'
+
   target 'realestateTests' do
     inherit! :complete
     # Pods for testing

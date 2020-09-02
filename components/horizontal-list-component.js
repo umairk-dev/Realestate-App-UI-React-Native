@@ -11,7 +11,7 @@ const HorizontalList = () => {
                 showsHorizontalScrollIndicator={false}>
                 <ScrollItem  
                     image={require("../assets/image1.jpg")}
-                    title="Exercise"
+                    title="3 Bedroom House"
                     location="126 Canadian Lakes"
                     animation = "bounceInLeft"
                     rating="1"
@@ -23,7 +23,7 @@ const HorizontalList = () => {
 
                 <ScrollItem  
                     image={require("../assets/image2.jpg")}
-                    title="Exercise"
+                    title="Town House"
                     location="126 Canadian Lakes"
                     animation = "bounceInLeft"
                     rating="1"

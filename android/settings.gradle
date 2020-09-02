@@ -1,3 +1,5 @@
 rootProject.name = 'realestate'
+include ':rn-range-slider'
+project(':rn-range-slider').projectDir = new File(rootProject.projectDir, '../node_modules/rn-range-slider/android')
 apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesSettingsGradle(settings)
 include ':app'

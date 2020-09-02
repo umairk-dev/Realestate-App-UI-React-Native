@@ -1,18 +1,30 @@
-import React from 'react';
-import {View, TouchableOpacity,Text,SafeAreaView, StyleSheet} from 'react-native'
+import React, { useState } from 'react';
+import {View, TouchableOpacity,Text,SafeAreaView,Modal,TouchableHighlight, StyleSheet} from 'react-native'
 import SearchBar from '../components/search-bar';
 import Icon from 'react-native-vector-icons/dist/MaterialIcons';
 import HorizontalList from '../components/horizontal-list-component';
 import { ScrollView } from 'react-native-gesture-handler';
 import RoundButton from '../components/round-button-component';
+import FilterDlg from '../components/filter-dialog';
 
 
-const Home = ({navigator}) => {
+const Home = ({navigation}) => {
+
+    const [filterModal,setFilterModel] = useState(false)
+    const showFilter = () =>{
+         setFilterModel(true);
+    }
+
+    const closeModal = () => {
+        setFilterModel(false);
+    }
+    
+
+
     return(
         <SafeAreaView style={styles.container}>
             <ScrollView>
                 <View style={styles.top}>
-                    <Icon name="notifications-none" size={20} color="grey"/>
                     <Icon name="notifications-none" size={20} color="grey"/>
                 </View>
                 <View style={styles.searchSection}>
@@ -20,8 +32,15 @@ const Home = ({navigator}) => {
                         <SearchBar/>
                     </View>
                     <View style={styles.filter}>
-                        <RoundButton  icon="filter-variant"/>
+                        <RoundButton handleClick={showFilter} icon="filter-variant"/>
                     </View>
+                    <Modal
+                        transparent
+                        visible={filterModal}
+                        onRequestClose={() => closeModal()}
+                    >
+                        <FilterDlg closeModal={closeModal}/>
+                    </Modal>
                 </View>
                 <View style={styles.section_title}>
                     <Text style={styles.title}>Popular Nearby</Text>
@@ -70,7 +89,7 @@ const styles = StyleSheet.create({
         paddingEnd:10
     },
     top:{
-        flexDirection:"row",
+        flexDirection:"row-reverse",
         margin:5,
         justifyContent:"space-between",
         padding:5
