@@ -11,7 +11,7 @@ import {
 
 
 import { NavigationContainer } from '@react-navigation/native';
-import BottomNav from './navigations/bottom-nav-component';
+import BottomNav from './src/navigations/bottom-nav-component';
 
 const App = () => {
   return (

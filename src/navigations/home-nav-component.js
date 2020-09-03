@@ -4,7 +4,6 @@ import React from "react";
 import { createStackNavigator } from '@react-navigation/stack';
 import Detail from '../screens/detail-page';
 import Home from '../screens/home-page';
-import FilterDlg from '../components/filter-dialog';
 
 const Stack = createStackNavigator();
 

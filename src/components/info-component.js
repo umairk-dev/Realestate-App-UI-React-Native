@@ -1,8 +1,8 @@
 
 import React from 'react';
 import {View, Text,StyleSheet,Dimensions} from 'react-native'
-import ProfileImage from  '../components/profile-image-component';
-import RoundButton from '../components/round-button-component';
+import ProfileImage from  './profile-image-component';
+import RoundButton from './round-button-component';
 import Icon from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
 const Info = ({image, name}) => {

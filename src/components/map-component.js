@@ -12,7 +12,7 @@ const Map = () => {
                     <Icon name="circle" color="#0B7292" size={10}/>
             </View>
             <View style={styles.imageContainer}>
-                <Image style={styles.imageStyle} source={require("../assets/map.png")} />
+                <Image style={styles.imageStyle} source={require("../../assets/map.png")} />
             </View>
                 
         </View>

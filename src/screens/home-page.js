@@ -6,7 +6,7 @@ import HorizontalList from '../components/horizontal-list-component';
 import { ScrollView } from 'react-native-gesture-handler';
 import RoundButton from '../components/round-button-component';
 import FilterDlg from '../components/filter-dialog';
-import DATA from '../sample-data'
+import DATA from '../../sample-data'
 
 const Home = ({navigation}) => {
 
