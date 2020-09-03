@@ -6,8 +6,8 @@ import Icon from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 const RoundButton = ({icon, isSelected,handleClick}) => {
     return(
             <TouchableOpacity onPress={() => handleClick()} style={styles.container}>
-                <View style={[styles.inner, isSelected?{backgroundColor:"blue"}:{backgroundColor:"white"}]}>
-                    <Icon name={icon} size={20} color={`${isSelected?"white":"blue"}`}/>
+                <View style={[styles.inner, isSelected?{backgroundColor:"#0B7292"}:{backgroundColor:"white"}]}>
+                    <Icon name={icon} size={20} color={`${isSelected?"white":"#0B7292"}`}/>
                 </View>
             </TouchableOpacity>
             

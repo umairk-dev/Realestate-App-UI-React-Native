@@ -1,38 +1,50 @@
-import React from 'react'
-import {View, ScrollView} from 'react-native'
+import React,{useState} from 'react'
+import {View, FlatList,Modal} from 'react-native'
 import ScrollItem from './scroll-Item'
+import Detail from '../screens/detail-page';
 
 
-const HorizontalList = () => {
+const HorizontalList = ({items, navigation}) => {
+
+    const [detailModal,setDetailModel] = useState(false)
+    const [selectedItem,setSelectedItem] = useState(null)
+
+    const showDetail = (item) =>{
+        setSelectedItem(item)
+        setDetailModel(true);
+    }
+
+    const closeDetail = () => {
+        setSelectedItem(null);
+        setDetailModel(false);
+    }
+
+
     return (
         <View >
-            <ScrollView 
+            <FlatList 
+                data={items}
                 horizontal={true} 
-                showsHorizontalScrollIndicator={false}>
-                <ScrollItem  
-                    image={require("../assets/image1.jpg")}
-                    title="3 Bedroom House"
-                    location="126 Canadian Lakes"
-                    animation = "bounceInLeft"
-                    rating="1"
-                    price="10"
-                    backgroundColor="#FCFCFC"
-                    color="#000"
-                    isSelected={false}
+                showsHorizontalScrollIndicator={false}
+                renderItem={({item}) =>( 
+                    <ScrollItem  
+                        item={item}
+                        animation = "bounceInLeft"
+                        backgroundColor="#FCFCFC"
+                        color="#000"
+                        handleClick={showDetail}
+                    />
+                )}
+                keyExtractor={(item) => item.id}
                 />
 
-                <ScrollItem  
-                    image={require("../assets/image2.jpg")}
-                    title="Town House"
-                    location="126 Canadian Lakes"
-                    animation = "bounceInLeft"
-                    rating="1"
-                    price="10"
-                    backgroundColor="#FCFCFC"
-                    color="#000"
-                    isSelected={true}
-                />
-               </ScrollView>
+                <Modal
+                        transparent
+                        visible={detailModal}
+                        onRequestClose={() => closeDetail()}
+                    >
+                        <Detail {...selectedItem} closeModal={closeDetail}/>
+                </Modal>
         </View>
     )
 }

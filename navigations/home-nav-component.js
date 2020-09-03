@@ -18,7 +18,13 @@ function HomeNav({navigation}){
                 headerTintColor: '#fff'
             }}
         />
-        <Stack.Screen name="Detail" component={Detail} />
+        <Stack.Screen name="Detail" component={Detail} 
+            options={{ 
+                headerTransparent:true,  
+                title:'',
+                headerTintColor: 'transparent'
+            }}
+        />
        
     </Stack.Navigator>
 

@@ -5,18 +5,20 @@ import SwitchButton from './switch-button-component';
 import RangeSlider from 'rn-range-slider';
 import RoomCount from './room-count-component';
 import { ScrollView } from 'react-native-gesture-handler';
+import * as Animatable from 'react-native-animatable';
 
 
 const FilterDlg = ({closeModal}) => {
+    
+    const [animation, setAnimation] = useState('bounceInUp');
+
     const [type, setType] = useState("Buy");
     
     const [rangeLow,setLow] = useState(250)
     const [rangeHigh,setHigh] = useState(700)
 
     const [bed,setBed] = useState(3)
-
     const [bath,setBath] = useState(2)
-
     const [car,setCar] = useState(1)
 
     const selectType = (newType) =>{
@@ -24,8 +26,11 @@ const FilterDlg = ({closeModal}) => {
         setType(newType)
     }
 
+
     return(
-        <View style={styles.container}>
+        <Animatable.View style={styles.container} easing="ease-out" animation={animation} duration={1200} onAnimationEnd={() => {animation === "bounceOutDown" ? closeModal() : null}}>
+
+
             <View style={styles.upper}></View>
             <View style={styles.lower}>
                 <View style={styles.titleContainer}>
@@ -69,18 +74,18 @@ const FilterDlg = ({closeModal}) => {
                 <View style={styles.innerContainer}>
                      <Text style={styles.title}>Rooms</Text>
                      <RoomCount icon="bed" name="Bedrooms" value={bed} handleValue={(value) => {setBed(value)}}/>   
-                     <RoomCount icon="bed" name="Bathrooms" value={bath} handleValue={(value) => {setBath(value)}}/>   
+                     <RoomCount icon="shower" name="Bathrooms" value={bath} handleValue={(value) => {setBath(value)}}/>   
                      <RoomCount icon="car" name="Parking" value={car} handleValue={(value) => {setCar(value)}}/>   
                 </View>
                 <View style={styles.innerContainer}>
-                        <TouchableOpacity style={styles.buttonApply}>
+                        <TouchableOpacity onPress={() => {setAnimation("bounceOutDown");}} style={styles.buttonApply}>
                             <Text style={styles.btnText}>Apply Filter</Text>
                         </TouchableOpacity>
                 </View>        
             </View>
             </ScrollView>
             </View>
-        </View>
+        </Animatable.View> 
     )
 }
 

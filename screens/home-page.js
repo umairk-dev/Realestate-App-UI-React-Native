@@ -6,7 +6,7 @@ import HorizontalList from '../components/horizontal-list-component';
 import { ScrollView } from 'react-native-gesture-handler';
 import RoundButton from '../components/round-button-component';
 import FilterDlg from '../components/filter-dialog';
-
+import DATA from '../sample-data'
 
 const Home = ({navigation}) => {
 
@@ -50,7 +50,7 @@ const Home = ({navigation}) => {
                 </View>
 
                 <View style={styles.horizontalList}>
-                    <HorizontalList/>
+                    <HorizontalList items={DATA} navigation={navigation}/>
                 </View>
 
                 <View style={styles.section_title}>
@@ -61,7 +61,7 @@ const Home = ({navigation}) => {
                 </View>
                     
                 <View style={styles.horizontalList}>
-                    <HorizontalList/>
+                    <HorizontalList items={DATA}  navigation={navigation}/>
                 </View>
 
             </ScrollView>

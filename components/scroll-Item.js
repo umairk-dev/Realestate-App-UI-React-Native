@@ -1,15 +1,17 @@
 import React from 'react';
-import {View, StyleSheet, Text, Image} from 'react-native';
+import {View,TouchableOpacity, StyleSheet, Text, Image} from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import Rating from './rating-component';
 import Price from './price-component';
 import RoundButton from './round-button-component';
 
 
-const ScrollItem = ({title, location,rating, price,image,isSelected,animation,...style}) => {
+const ScrollItem = ({item,animation,handleClick,...style}) => {
+    const {title, location,rating, price,currency,unit,image,isSelected} = item
     return(
         <Animatable.View  animation={animation} duration={1200} >
-            <View style={styles.container} {...style}>
+            <TouchableOpacity onPress={() => handleClick(item)}>
+                <View style={styles.container} {...style}>
                 <View style={styles.imageContainer}>
                     <Image style={styles.imageStyle} source={image} />
                 </View>
@@ -20,12 +22,12 @@ const ScrollItem = ({title, location,rating, price,image,isSelected,animation,..
                             <Text style={styles.subtitle}>{location}</Text>
                         </View>
                         <View style={styles.col2}>
-                            <Rating  value={4}/>
+                            <Rating  value={rating}/>
                         </View>
                     </View>
                     <View style={styles.row}>
                         <View>
-                            <Price price={price} currency="$" unit="per week"/>
+                            <Price price={price} currency={currency} unit={unit}/>
                         </View>
                         <View>
                             <RoundButton isSelected={isSelected} icon="heart-outline" />
@@ -35,6 +37,8 @@ const ScrollItem = ({title, location,rating, price,image,isSelected,animation,..
 
 
             </View>
+           </TouchableOpacity>
+            
         </Animatable.View>
        
     );
@@ -72,15 +76,15 @@ const styles = StyleSheet.create({
         margin:0,
         borderRadius:20,
     },
-    textContainer:{
-        flex:1,
-        padding:10
-        
-    },
     imageStyle: {
         flex:1,
         width:"100%",
         borderRadius:20,
+    },
+    textContainer:{
+        flex:1,
+        padding:10
+        
     },
     row:{
         flexDirection:"row",
